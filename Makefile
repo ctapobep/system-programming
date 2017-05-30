@@ -6,7 +6,7 @@ all: main.o readfile.o
 	$(TARGET_DIR)/readfile
 main.o: prepare
 	$(CC) main.c -o $(TARGET_DIR)/main
-readfile.o: prepare $(SRC_DIR)/csapp.h rio.o
+readfile.o: $(SRC_DIR)/csapp.h rio.o
 	$(CC) -o $(TARGET_DIR)/readfile readfile.c $(TARGET_DIR)/rio.o
 rio.o: prepare $(SRC_DIR)/csapp.h
 	$(CC) -c $(SRC_DIR)/rio.c -o $(TARGET_DIR)/rio.o
