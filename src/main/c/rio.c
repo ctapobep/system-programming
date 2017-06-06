@@ -69,5 +69,18 @@ void rio_readinitb(rio_t *rp, int fd) {
     rp->rio_cnt = 0;
     rp->rio_bufptr = rp->rio_buf;
 }
-//ssize_t rio_readnb(rio_t *rp, void *usrbuf, size_t n);
+ssize_t rio_readnb(rio_t *rp, void *usrbuf, size_t n) {
+    ssize_t nread = 0;
+    ssize_t nleft = n;
+    char *bufp = usrbuf;
+    while(nleft > 0) {
+        if((nread = rio_read(rp, bufp, nleft)) < 0) {
+            if(errno == EINTR) return 0;
+            else return -1;
+        }
+        nleft = n - nread;
+        bufp += nread;
+    }
+    return (n - nleft);
+}
 

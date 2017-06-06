@@ -21,7 +21,7 @@ int main() {
     char read[length];
     rio_t rp;
     rio_readinitb(&rp, fd);
-    rio_readlineb(&rp, read, length);
+    rio_readnb(&rp, read, length);
 
     close(fd);
     printf("[Read ]: %s \n", read);
