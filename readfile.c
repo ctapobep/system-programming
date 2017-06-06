@@ -17,9 +17,11 @@ int main() {
     rio_writen(fd, to_write, length);
     close(fd);
 
-    fd =  open("./target/tmpfile_by_c.txt", O_RDONLY, 0);
+    fd = open("./target/tmpfile_by_c.txt", O_RDONLY, 0);
     char read[length];
-    rio_readn(fd, read, length) < 0;
+    rio_t rp;
+    rio_readinitb(&rp, fd);
+    rio_readlineb(&rp, read, length);
 
     close(fd);
     printf("[Read ]: %s \n", read);
