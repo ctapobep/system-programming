@@ -1,5 +1,12 @@
+CMakeCache.txt
+cmake_install.cmake
+*.cbp
+Makefile
+Makefile.am
+
 target/
 cmake-build-debug/
+CMakeFiles
 .idea/
 
 # Prerequisites

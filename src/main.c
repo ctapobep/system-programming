@@ -21,4 +21,3 @@ int main() {
     show_bytes((bytes)s, strlen(s));
     return 0;
 }
-
